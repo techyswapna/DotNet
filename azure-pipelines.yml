@@ -23,12 +23,12 @@ steps:
     arguments: '--configuration $(BuildConfiguration)'
 
 - task: DotNetCoreCLI@2
-  displayName: 'DotNet Test'
+  displayName: 'Test'
   inputs:
     command: 'test'
+	projects: '**/*NUnitTestProject1.csproj'
     arguments: '--configuration $(buildConfiguration) --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura'
     publishTestResults: true
-    projects: 'DotNetTestLibrary'
   
 - task: PublishCodeCoverageResults@1
   displayName: 'Publish code coverage report'
