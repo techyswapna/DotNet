@@ -15,15 +15,18 @@ steps:
     projects: '**/*.csproj'
     feedsToUse: 'select'
 
-- script: dotnet build --configuration $(buildConfiguration)
+- task: DotNetCoreCLI@2
   displayName: 'dotnet build $(buildConfiguration)'
-
-- task: UseDotNet@2
-  displayName: 'Install .NET Core SDK'
   inputs:
-    version: 5.0.x
-    performMultiLevelLookup: true
-    includePreviewVersions: true
+    command: 'build'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build'
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
   inputs:
