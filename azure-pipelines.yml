@@ -4,6 +4,9 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  buildConfiguration: 'Release'
+
 steps:
 - task: DotNetCoreCLI@2
   displayName: Restore
@@ -16,7 +19,6 @@ steps:
   displayName: Build
   inputs:
     command: 'build'
-    projects: '**/*.csproj'
     arguments: '--configuration $(BuildConfiguration)'
 
 - task: DotNetCoreCLI@2
