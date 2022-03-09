@@ -26,7 +26,7 @@ steps:
   displayName: 'Test'
   inputs:
     command: 'test'
-	projects: '**/*NUnitTestProject1.csproj'
+	  projects: '**/*NUnitTestProject1.csproj'
     arguments: '--configuration $(buildConfiguration) --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura'
     publishTestResults: true
   
