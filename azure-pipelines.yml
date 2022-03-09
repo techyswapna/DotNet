@@ -1,0 +1,49 @@
+trigger:
+- master
+
+pool:
+  vmImage: windows-latest
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
+
+- task: DotNetCoreCLI@2
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '**/*NUnitTestProject1.csproj'
+    arguments: '--no-build --configuration $(buildConfiguration)'
+    publishTestResults: true
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '**/*NUnitTestProject1.csproj'
+    arguments: '--configuration $(buildConfiguration) --collect "Code Coverage"'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    projects: '**/*.csproj'
+    publishWebProjects: false
+    arguments: '--no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: true 
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'DotNetTest'
+  
