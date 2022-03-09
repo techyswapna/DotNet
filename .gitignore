@@ -1,0 +1,16 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/ATTCoreWebApp/.vs/ATTCoreWebApp
+/ATTCoreWebApp/ATTCoreWebApp/bin/Debug/net5.0
+/ATTCoreWebApp/ATTCoreWebApp/obj
+/ATTCoreWebApp/ATTCoreWebAppTests/bin
+/ATTCoreWebApp/ATTCoreWebAppTests/obj
+/NUnitTestProject1/bin/Debug
+/NUnitTestProject1/obj
+/NUnitTestProject1/coverageresults
+/NUnitTestProject1/TestResults
+/NUnitTestProject1/coverage.json
+/ATTCoreWebApp/.sonarqube
