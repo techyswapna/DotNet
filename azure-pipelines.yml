@@ -40,7 +40,7 @@ steps:
     checkCoverage: true
     coverageFailOption: 'fixed'
     coverageType: 'lines'
-    coverageThreshold: '10'
+    coverageThreshold: '90'
 - task: DotNetCoreCLI@2
   displayName: Publish
   inputs:
