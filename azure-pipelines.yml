@@ -1,5 +1,5 @@
 trigger:
-- master
+- none
 
 pool:
   vmImage: ubuntu-latest
@@ -35,6 +35,12 @@ steps:
     codeCoverageTool: 'Cobertura'
     summaryFileLocation: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
 
+- task: BuildQualityChecks@8
+  inputs:
+    checkCoverage: true
+    coverageFailOption: 'fixed'
+    coverageType: 'lines'
+    coverageThreshold: '10'
 - task: DotNetCoreCLI@2
   displayName: Publish
   inputs:
