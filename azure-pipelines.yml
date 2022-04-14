@@ -1,13 +1,34 @@
 trigger:
-- none
+- main
 
 pool:
   vmImage: ubuntu-latest
 
 variables:
   buildConfiguration: 'Release'
+  GitVersion.SemVer: ''
 
 steps:
+- task: gitversion/setup@0
+  displayName: gitversion
+  inputs:
+    versionSpec: '5.x'
+    updateAssemblyInfo: true
+
+- task: gitversion/execute@0
+  inputs:
+    useConfigFile: true
+    configFilePath: './GitVersion.yml'
+
+- script: 'echo current version is $(GitVersion.SemVer)'
+  displayName: 'Display Calculated Version'
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: echo "##vso[build.updatebuildnumber]$(SemVer)"
+  displayName: 'Update Build Number'
+
 - task: DotNetCoreCLI@2
   displayName: Restore
   inputs:
