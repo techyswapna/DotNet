@@ -1,5 +1,9 @@
 mode: Mainline
 branches:
+  develop :
+    regex: ^develop?[/-]
+    source-branches: ['main','master']
+    tag: devel-{BranchName}
   features:
     regex: ^feature?[/-]
     source-branches: ['main','master']
