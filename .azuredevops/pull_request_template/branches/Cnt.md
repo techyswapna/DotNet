@@ -1,4 +1,4 @@
 Add details about this PR here
 
 
-DO NOT DELETE: [+semver:minor-Cnt]
+DO NOT DELETE: [Cnt+semver:minor]
