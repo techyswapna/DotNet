@@ -20,13 +20,13 @@ steps:
     useConfigFile: true
     configFilePath: './GitVersion.yml'
 
-- script: 'echo current version is $(Cnt-GitVersion.SemVer)'
+- script: 'echo current version is $(GitVersion.SemVer)'
   displayName: 'Display Calculated Version'
 
 - task: Bash@3
   inputs:
     targetType: 'inline'
-    script: echo "##vso[build.updatebuildnumber]$(SemVer)"
+    script: echo "##vso[build.updatebuildnumber]$(Can-SemVer)"
   displayName: 'Update Build Number'
 
 - task: DotNetCoreCLI@2
