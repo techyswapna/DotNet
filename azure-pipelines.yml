@@ -34,8 +34,6 @@ steps:
     targetType: 'inline'
     script: |
       npm install -g auto-changelog
-      
-      auto-changelog --template changelog-template.hbs
 
 - task: DotNetCoreCLI@2
   displayName: Restore
